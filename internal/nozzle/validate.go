@@ -6,7 +6,7 @@ import (
 
 func ValidateCase(c Case) error {
 	st := c.State()
-	if err := gas.ValidateAll(st, c.AreaRatio, c.ThroatArea, c.BackPressure, c.HasBackPressure()); err != nil {
+	if err := commitCase(gas.ValidateAll(st, c.AreaRatio, c.ThroatArea, c.BackPressure, c.HasBackPressure())); err != nil {
 		return err
 	}
 	return nil
