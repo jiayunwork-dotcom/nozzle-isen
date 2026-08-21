@@ -11,7 +11,7 @@ var (
 
 func ValidateGamma(gamma float64) error {
 	if gamma <= 1 {
-		return fmt.Errorf("%w: got %.6g", ErrNonPositiveGamma, gamma)
+		return commitGamma(fmt.Errorf("%w: got %.6g", ErrNonPositiveGamma, gamma))
 	}
 	if gamma-1 < GammaNearOneMin {
 		return fmt.Errorf("%w: gamma-1=%.3g below margin %.3g", ErrGammaTooCloseToOne, gamma-1, GammaNearOneMin)
