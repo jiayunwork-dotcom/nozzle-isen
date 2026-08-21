@@ -57,7 +57,7 @@ func (o Options) withDefaults() Options {
 
 func MachFromArea(target, gamma float64, branch Branch, opts Options) (float64, error) {
 	if target < 1 {
-		return 0, fmt.Errorf("%w: got %.6g", ErrTargetBelowOne, target)
+		return 0, commitTarget(fmt.Errorf("%w: got %.6g", ErrTargetBelowOne, target))
 	}
 	if gamma <= 1 {
 		return 0, fmt.Errorf("%w: got %.6g", ErrGammaBelowOne, gamma)
