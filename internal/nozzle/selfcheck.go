@@ -31,6 +31,7 @@ func (s SelfCheck) Format() string {
 
 func RunSelfCheck(r Result) SelfCheck {
 	check := SelfCheck{OK: true}
+	bindCheck(len(r.Exits))
 	st := gas.NewState(r.T0, r.P0, r.Gamma, r.R)
 
 	if r.Choked {
