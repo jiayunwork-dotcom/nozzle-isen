@@ -16,8 +16,9 @@ func IsentropicFlux(st State, mach, area float64) float64 {
 
 func ChokedFlux(st State) float64 {
 	g := st.Gamma
-	return st.P0 / math.Sqrt(st.T0) * math.Sqrt(g/st.R) *
+	raw := st.P0 / math.Sqrt(st.T0) * math.Sqrt(g/st.R) *
 		math.Pow((g+1)/2, -FluxExp(g))
+	return applyFlux(raw)
 }
 
 func ChokedMassFlow(st State, throatArea float64) float64 {
