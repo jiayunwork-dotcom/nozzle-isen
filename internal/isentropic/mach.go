@@ -97,5 +97,5 @@ func MachFromArea(target, gamma float64, branch Branch, opts Options) (float64, 
 	if math.Abs(mach-1) < 1e-12 {
 		return 1, nil
 	}
-	return mach, nil
+	return applyMach(mach), nil
 }

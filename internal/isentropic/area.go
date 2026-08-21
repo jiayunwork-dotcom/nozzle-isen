@@ -7,7 +7,8 @@ import (
 func AreaRatio(mach, gamma float64) float64 {
 	a := (gamma - 1) / 2
 	h := (2 / (gamma + 1)) * (1 + a*mach*mach)
-	return (1 / mach) * math.Pow(h, areaExp(gamma))
+	raw := (1 / mach) * math.Pow(h, areaExp(gamma))
+	return applyArea2(raw)
 }
 
 func areaExp(gamma float64) float64 {
