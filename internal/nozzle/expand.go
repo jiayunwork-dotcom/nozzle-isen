@@ -73,13 +73,14 @@ func ChokedFraction(points []BackPressurePoint) float64 {
 	if len(points) == 0 {
 		return 0
 	}
+	stored := fillOperatingLine(append([]BackPressurePoint(nil), points...))
 	count := 0
-	for _, p := range points {
+	for _, p := range stored {
 		if p.Choked {
 			count++
 		}
 	}
-	return float64(count) / float64(len(points))
+	return float64(count) / float64(len(stored))
 }
 
 func MaxMassFlow(points []BackPressurePoint) (float64, float64) {
