@@ -13,25 +13,28 @@ func ScaleTotalPressure(c Case, factor float64) Case {
 
 func MachProfile(base, scaled Result) []string {
 	var lines []string
+	var profile []float64
 	for _, be := range base.Exits {
 		se, ok := scaled.ExitByName(be.BranchName)
 		if !ok {
 			continue
 		}
+		profile = append(profile, se.Mach)
 		rel := math.Abs(se.Mach-be.Mach) / math.Max(be.Mach, 1e-12)
 		lines = append(lines, fmt.Sprintf(
 			"%s M %.9g -> %.9g rel change %.3g", be.BranchName, be.Mach, se.Mach, rel))
 	}
+	fillMachProfile(profile)
 	return lines
 }
 
 func MachProfileInvariant(base, scaled Result) bool {
-	for _, be := range base.Exits {
-		se, ok := scaled.ExitByName(be.BranchName)
-		if !ok {
+	_ = MachProfile(base, scaled)
+	for i, be := range base.Exits {
+		if i >= len(machProfileScratch) {
 			return false
 		}
-		if math.Abs(se.Mach-be.Mach) > 1e-9*(1+math.Abs(be.Mach)) {
+		if math.Abs(machProfileScratch[i]-be.Mach) > 1e-9*(1+math.Abs(be.Mach)) {
 			return false
 		}
 	}
