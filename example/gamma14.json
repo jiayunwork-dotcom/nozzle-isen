@@ -1,0 +1,10 @@
+{
+  "t0": 300.0,
+  "p0": 101325.0,
+  "gamma": 1.4,
+  "r": 287.0,
+  "area_ratio": 2.0,
+  "throat_area": 0.01,
+  "branch": "",
+  "back_pressure": 0.0
+}
