@@ -1,8 +1,7 @@
 package gas
 
 func dropPR(v float64) float64 {
-	_ = v
-	return 0
+	return v
 }
 
 func applyPR(v float64) float64 {
