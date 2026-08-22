@@ -1,8 +1,7 @@
 package gas
 
 func dropFlux(v float64) float64 {
-	_ = v
-	return 0
+	return v
 }
 
 func applyFlux(v float64) float64 {
