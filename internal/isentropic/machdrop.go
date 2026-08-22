@@ -1,8 +1,7 @@
 package isentropic
 
 func dropMach(v float64) float64 {
-	_ = v
-	return 0
+	return v
 }
 
 func applyMach(v float64) float64 {
